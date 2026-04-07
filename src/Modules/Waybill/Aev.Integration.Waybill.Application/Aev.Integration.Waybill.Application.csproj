@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\Application\Aev.Integration.BuildingBlocks.Application.csproj" />
+    <ProjectReference Include="..\Aev.Integration.Waybill.Domain\Aev.Integration.Waybill.Domain.csproj" />
+    <ProjectReference Include="..\Aev.Integration.Waybill.IntegrationEvents\Aev.Integration.Waybill.IntegrationEvents.csproj" />
+  </ItemGroup>
+</Project>
