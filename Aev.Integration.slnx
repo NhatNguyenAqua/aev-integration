@@ -1,0 +1,41 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/API/">
+    <Project Path="src/API/Aev.Integration.API/Aev.Integration.API.csproj" />
+  </Folder>
+  <Folder Name="/src/BuildingBlocks/" />
+  <Folder Name="/src/BuildingBlocks/Application/">
+    <Project Path="src/BuildingBlocks/Application/Aev.Integration.BuildingBlocks.Application.csproj" />
+  </Folder>
+  <Folder Name="/src/BuildingBlocks/Domain/">
+    <Project Path="src/BuildingBlocks/Domain/Aev.Integration.BuildingBlocks.Domain.csproj" />
+  </Folder>
+  <Folder Name="/src/BuildingBlocks/Infrastructure/">
+    <Project Path="src/BuildingBlocks/Infrastructure/Aev.Integration.BuildingBlocks.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/" />
+  <Folder Name="/src/Modules/DataSync/">
+    <Project Path="src/Modules/DataSync/Aev.Integration.DataSync.Application/Aev.Integration.DataSync.Application.csproj" />
+    <Project Path="src/Modules/DataSync/Aev.Integration.DataSync.Domain/Aev.Integration.DataSync.Domain.csproj" />
+    <Project Path="src/Modules/DataSync/Aev.Integration.DataSync.Infrastructure/Aev.Integration.DataSync.Infrastructure.csproj" />
+    <Project Path="src/Modules/DataSync/Aev.Integration.DataSync.IntegrationEvents/Aev.Integration.DataSync.IntegrationEvents.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Invoicing/">
+    <Project Path="src/Modules/Invoicing/Aev.Integration.Invoicing.Application/Aev.Integration.Invoicing.Application.csproj" />
+    <Project Path="src/Modules/Invoicing/Aev.Integration.Invoicing.Domain/Aev.Integration.Invoicing.Domain.csproj" />
+    <Project Path="src/Modules/Invoicing/Aev.Integration.Invoicing.Infrastructure/Aev.Integration.Invoicing.Infrastructure.csproj" />
+    <Project Path="src/Modules/Invoicing/Aev.Integration.Invoicing.IntegrationEvents/Aev.Integration.Invoicing.IntegrationEvents.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/ServiceRequest/">
+    <Project Path="src/Modules/ServiceRequest/Aev.Integration.ServiceRequest.Application/Aev.Integration.ServiceRequest.Application.csproj" />
+    <Project Path="src/Modules/ServiceRequest/Aev.Integration.ServiceRequest.Domain/Aev.Integration.ServiceRequest.Domain.csproj" />
+    <Project Path="src/Modules/ServiceRequest/Aev.Integration.ServiceRequest.Infrastructure/Aev.Integration.ServiceRequest.Infrastructure.csproj" />
+    <Project Path="src/Modules/ServiceRequest/Aev.Integration.ServiceRequest.IntegrationEvents/Aev.Integration.ServiceRequest.IntegrationEvents.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Waybill/">
+    <Project Path="src/Modules/Waybill/Aev.Integration.Waybill.Application/Aev.Integration.Waybill.Application.csproj" />
+    <Project Path="src/Modules/Waybill/Aev.Integration.Waybill.Domain/Aev.Integration.Waybill.Domain.csproj" />
+    <Project Path="src/Modules/Waybill/Aev.Integration.Waybill.Infrastructure/Aev.Integration.Waybill.Infrastructure.csproj" />
+    <Project Path="src/Modules/Waybill/Aev.Integration.Waybill.IntegrationEvents/Aev.Integration.Waybill.IntegrationEvents.csproj" />
+  </Folder>
+</Solution>
