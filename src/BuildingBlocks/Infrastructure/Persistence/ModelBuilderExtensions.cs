@@ -49,7 +49,7 @@ public static class ModelBuilderExtensions
                     fromPrimitiveParam);
 
                 var toPrimitiveParam = System.Linq.Expressions.Expression.Parameter(clrType);
-                var valueProperty = clrType.GetProperty(nameof(ITypedId<object>.Value));
+                var valueProperty = clrType.GetProperty("Value");
                 if (valueProperty is null)
                     continue;
 

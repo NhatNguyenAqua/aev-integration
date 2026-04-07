@@ -2,34 +2,30 @@ using System.Text.Json;
 using Aev.Integration.BuildingBlocks.Application.EventBus;
 using Aev.Integration.BuildingBlocks.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Quartz;
 
 namespace Aev.Integration.BuildingBlocks.Infrastructure.Messaging.Outbox;
 
-[DisallowConcurrentExecution]
 public class ProcessOutboxMessagesJob<TContext>(
-    IServiceScopeFactory scopeFactory,
+    TContext dbContext,
+    IEventBus eventBus,
     ILogger<ProcessOutboxMessagesJob<TContext>> logger)
-    : IJob where TContext : BaseDbContext
+    where TContext : BaseDbContext
 {
     private static readonly JsonSerializerOptions SerializerOptions = new()
     {
         PropertyNameCaseInsensitive = true
     };
 
-    public async Task Execute(IJobExecutionContext context)
-    {
-        await using var scope = scopeFactory.CreateAsyncScope();
-        var dbContext = scope.ServiceProvider.GetRequiredService<TContext>();
-        var eventBus = scope.ServiceProvider.GetRequiredService<IEventBus>();
+    private const int BatchSize = 50;
 
+    public async Task ExecuteAsync(CancellationToken cancellationToken = default)
+    {
         var messages = await dbContext.OutboxMessages
             .Where(m => m.ProcessedOn == null)
             .OrderBy(m => m.OccurredOn)
-            .Take(50)
-            .ToListAsync(context.CancellationToken);
+            .Take(BatchSize)
+            .ToListAsync(cancellationToken);
 
         foreach (var message in messages)
         {
@@ -56,7 +52,7 @@ public class ProcessOutboxMessagesJob<TContext>(
                     continue;
                 }
 
-                await eventBus.PublishAsync(integrationEvent, context.CancellationToken);
+                await eventBus.PublishAsync(integrationEvent, cancellationToken);
 
                 message.ProcessedOn = DateTime.UtcNow;
 
@@ -71,6 +67,6 @@ public class ProcessOutboxMessagesJob<TContext>(
             }
         }
 
-        await dbContext.SaveChangesAsync(context.CancellationToken);
+        await dbContext.SaveChangesAsync(cancellationToken);
     }
 }
