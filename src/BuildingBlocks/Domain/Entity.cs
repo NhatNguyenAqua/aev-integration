@@ -12,6 +12,12 @@ public abstract class Entity<TId> where TId : notnull
 
     public void ClearDomainEvents() => _domainEvents.Clear();
 
+    protected static void CheckRule(IBusinessRule rule)
+    {
+        if (rule.IsBroken())
+            throw new BusinessRuleValidationException(rule);
+    }
+
     public override bool Equals(object? obj)
     {
         if (obj is not Entity<TId> other) return false;
